@@ -31,7 +31,7 @@ class Hosting:
             self.c.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             print("connecting...")
             #print("debug log : ",hostname_, username_, pkey_)
-            self.c.connect( hostname = "43.204.36.248", username = "ec2-user", pkey = cert)
+            self.c.connect( hostname = "43.204.XX.XXX", username = "ec2-user", pkey = cert)
             print("connected!!!")
         except Exception as ex:
             print("User log:: Exception :",ex)
@@ -118,7 +118,7 @@ class Hosting:
     def subprocess_method_inprogress_two(self):  
         ssh = SSHClient()
         ssh.load_system_host_keys()
-        ssh.connect('ec2-user@43.204.36.248:/home/ec2-user/')
+        ssh.connect('ec2-user@43.204.xx.xxx:/home/ec2-user/')
         with SCPClient(ssh.get_transport()) as scp:
             scp.put('/Users/parthan/Desktop/PYTHON_TASK/sftp_programming/two.txt', 'my_file.txt')
 
@@ -143,14 +143,14 @@ class Hosting:
         try:
             self.ssh = paramiko.SSHClient()
             self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            self.ssh.connect(hostname='192.168.1.3',username='parthan',password='8131', port=22)
+            self.ssh.connect(hostname='192.xxx.x.x',username='parthan',password='xxx', port=22)
             print("user log :: Connetion successfull")
         except Exception as ex:
             print("user log :: Exception occuared : ", ex)
         try:
             #useless_cat_call = subprocess.run(["cat"], stdout=subprocess.PIPE, text=True, input="Hello from the other side")
             #print(useless_cat_call.stdout)
-            ls_call = subprocess.run(["scp -i “copy-task-test.pem” first.txt ec2-user@ec2-43-204-36-248.ap-south-1.compute.amazonaws.com:linux_home/"], stdout=subprocess.PIPE)
+            ls_call = subprocess.run(["scp -i “copy-task-test.pem” first.txt ec2-user@ec2-43-204-xx-xxx.ap-south-1.compute.amazonaws.com:linux_home/"], stdout=subprocess.PIPE)
             print(ls_call.stdout) 
         except Exception as ex:
             print("Exception logged:: ",ex)
